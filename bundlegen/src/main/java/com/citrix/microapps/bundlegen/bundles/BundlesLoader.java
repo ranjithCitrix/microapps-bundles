@@ -3,6 +3,8 @@ package com.citrix.microapps.bundlegen.bundles;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.Instant;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -73,7 +75,6 @@ public class BundlesLoader {
 
         return new Bundle(bundle, metadata, issues);
     }
-
 
 
     private Optional<Metadata> loadAndValidateMetadata(List<ValidationException> issues, FsBundle bundle) {
@@ -197,6 +198,9 @@ public class BundlesLoader {
         validateFormat(DATE_PATTERN, "created", metadata.getCreated()).ifPresent(issues::add);
         validateFormat(VERSION_PATTERN, "masVersion", metadata.getMasVersion()).ifPresent(issues::add);
 
+        if (metadata.getDeprecatedDate() != null) {
+            isTimestampValid("deprecatedDate", metadata.getDeprecatedDate()).ifPresent(issues::add);
+        }
         validateSync(bundle::getType, "type", metadata.getType()).ifPresent(issues::add);
         validateSync(bundle::getVendor, "vendor", metadata.getVendor()).ifPresent(issues::add);
 
@@ -205,7 +209,7 @@ public class BundlesLoader {
         if (metadata.getCategories() != null && metadata.getCategories().contains(COMING_SOON)) {
             issues.add(new ValidationException(
                     String.format("Category COMING_SOON is not allowed in directory: `%s`. " +
-                            "Please move it to comming_soon dir or remove the category from bundle ",
+                                    "Please move it to comming_soon dir or remove the category from bundle ",
                             metadata.getType())));
         }
 
@@ -267,6 +271,16 @@ public class BundlesLoader {
         return templateFile.getTranslationChecksum() == null || templateFile.getTranslationChecksum().isEmpty() ?
                 Optional.of(new ValidationException(
                         String.format("Missing the translation checksum %s", fileName))) : Optional.empty();
+    }
+
+    static Optional<ValidationException> isTimestampValid(String field, String timestamp) {
+        try {
+            Instant.parse(timestamp);
+            return Optional.empty();
+        } catch (DateTimeParseException e) {
+            return Optional.of(new ValidationException(
+                    String.format("Invalid UTC timestamp format: field `%s`, value `%s`", field, timestamp)));
+        }
     }
 
     /**
