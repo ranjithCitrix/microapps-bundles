@@ -26,6 +26,5 @@
     "numberOfEvents" : 1,
     "action" : true
   } ],
-  "vaResolvers" : [ ],
   "tags" : [ ]
 }
