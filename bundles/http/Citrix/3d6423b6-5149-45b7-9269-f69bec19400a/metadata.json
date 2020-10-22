@@ -3,7 +3,7 @@
   "vendor" : "Citrix",
   "id" : "d73d4365-0091-4b96-b2e4-ff7f7817599d",
   "title" : "Podio",
-  "description" : "",
+  "description" : "Integrate with Podio to create microapps on custom webforms/applications",
   "iconUrl" : "https://microappsicontest-cdn.azureedge.net/image/GRZ6pJNt64o2JpgdXGm8yBggKR8YQhLc.png",
   "masVersion" : "1.37.0.7ea48e728db50704d309b9eb3f9a18ad8a37aa77",
   "created" : "2020-10-21T22:56:16",
