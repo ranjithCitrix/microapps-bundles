@@ -3995,7 +3995,7 @@
   "services" : [ {
     "id" : 18,
     "uuid" : "d73d4365-0091-4b96-b2e4-ff7f7817599d",
-    "version" : 86,
+    "version" : 87,
     "title" : "Podio",
     "serviceType" : "GWSC",
     "group" : "GWSC:JSON",
@@ -5301,7 +5301,7 @@
         "preActionUpdates" : [ ],
         "postActionUpdates" : [ ]
       } ],
-      "iconUrl" : "https://microappsicontest-cdn.azureedge.net/image/GRZ6pJNt64o2JpgdXGm8yBggKR8YQhLc.png",
+      "iconUrl" : "https://microappsicontest-cdn.azureedge.net/image/3CDDE3hCkB4828l1MLZFS8Heytx8TTU9.png",
       "iconType" : "CUSTOM_IMAGE"
     },
     "context" : { },
@@ -6092,7 +6092,7 @@
   "modelConfiguration" : {
     "appIds" : [ "8ef83dd8-8def-41e2-ad46-7651411c2754", "acee956a-9549-4ec9-94cb-ea8197fe5d99", "69e6945f-7703-4071-bde0-e12329be2fd0" ],
     "resolverIds" : [ ],
-    "bundleDescription" : "",
+    "bundleDescription" : "Integrate with Podio to create microapps based on custom Podio applications",
     "bundleVendor" : "Citrix"
   },
   "translationChecksum" : "67A26FFA242D3191B5D0D048ADAC6AD9",
