@@ -96,7 +96,8 @@
     "tag" : "viaCitrixReady",
     "value" : "https://citrixready.citrix.com/zoho-corporation/zoho-crm-microapps.html"
   }, {
-  "tag" : "developerReady",
-  "value" : "https://github.com/citrix-workspace/microapps-bundles/"
-  } ]
+    "tag" : "developerReady",
+    "value" : "https://github.com/citrix-workspace/microapps-bundles/"
+  } ],
+  "hideAddButton": false
 }
