@@ -20,6 +20,12 @@
   "tags" : [ {
     "tag" : "helpUrl",
     "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-gotomeeting.html"
+    }, {
+      "tag" : "viaCitrixReady",
+      "value" : "https://citrixready.citrix.com/zoho-corporation/zoho-crm-microapps.html"
+    }, {
+      "tag" : "developerReady",
+      "value" : "https://github.com/citrix-workspace/microapps-bundles/"
     }
   ]
 }

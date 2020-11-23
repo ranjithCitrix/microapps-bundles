@@ -17,5 +17,11 @@
     "action" : false
   } ],
   "vaResolvers" : [ ],
-  "tags" : [ ]
+  "tags" : [ {
+    "tag" : "viaCitrixReady",
+    "value" : "https://citrixready.citrix.com/zoho-corporation/zoho-crm-microapps.html"
+  }, {
+  "tag" : "developerReady",
+  "value" : "https://github.com/citrix-workspace/microapps-bundles/"
+  } ]
 }
