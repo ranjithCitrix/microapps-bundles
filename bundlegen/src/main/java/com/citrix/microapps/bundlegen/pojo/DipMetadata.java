@@ -43,7 +43,8 @@ public class DipMetadata extends Metadata {
                 i18nLanguages,
                 apps,
                 vaResolvers,
-                tags);
+                tags,
+                false);
 
         this.id = id;
         this.version = version;

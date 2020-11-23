@@ -390,7 +390,8 @@ class BundlesLoaderTest {
                                 Collections.emptyList(),
                                 Collections.emptyList(),
                                 Collections.emptyList(),
-                                Collections.emptyList())
+                                Collections.emptyList(),
+                                false)
                 )
         );
     }
@@ -414,7 +415,8 @@ class BundlesLoaderTest {
                                 Collections.singletonList("bad"),
                                 Collections.emptyList(),
                                 Collections.emptyList(),
-                                Collections.emptyList()),
+                                Collections.emptyList(),
+                                false),
                         Arrays.asList(
                                 "Invalid value: field `created`, value `bad 2019-12-18T11:36:00`, pattern " +
                                         "`[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}`",
