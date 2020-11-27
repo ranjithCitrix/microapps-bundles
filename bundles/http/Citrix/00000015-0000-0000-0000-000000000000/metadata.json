@@ -26,10 +26,10 @@
    "tag" : "helpUrl",
    "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-google-meet.html"
    }, {
-    "tag" : "viaCitrixReady",
+    "tag" : "viaCitrixReadyUrl",
     "value" : "https://citrixready.citrix.com/zoho-corporation/zoho-crm-microapps.html"
   }, {
-    "tag" : "developerReady",
+    "tag" : "developerReadyUrl",
     "value" : "https://github.com/citrix-workspace/microapps-bundles/"
   } ],
   "hideAddButton": false
