@@ -7,7 +7,7 @@
   "description" : "Integrate with Jira to track issues and get automated updates about tasks on any device, intranet, or messenger.",
   "iconUrl" : "https://ctx-ws-cdn.cloud.com/assets/microapps/exported/JIRA.35cdd2008e8e83479745e5635da3d7f1.svg",
   "masVersion" : "1.41.1.796212e267abc6538324f3dc2e6aa1ee4fcf2913",
-  "categories" : [ "INTERNAL_DEVELOPMENT" ],
+  "categories" : [ "INTERNAL_DEVELOPMENT", "LEGACY" ],
   "created" : "2020-11-13T13:42:08",
   "deprecatedDate": "2020-12-26T10:00:00Z",
   "supportsOAuthForActions" : true,
