@@ -2,6 +2,7 @@
   "type" : "DIP",
   "vendor" : "Citrix",
   "id" : "com.sapho.services.workday.WorkdayService",
+  "trackingUuid" : "31e9213d-60c4-4826-a07f-9cca623e379f",
   "version" : "0.1.15",
   "title" : "Workday",
   "description" : "Integrate with Workday to submit Time Off requests, Expenses and Change Job. Receive notifications about the status change of a request, and act on notifications.",
@@ -9,6 +10,7 @@
   "masVersion" : "1.40.1",
   "categories" : [ "LEGACY" ],
   "created" : "2020-11-12T13:51:58",
+  "deprecatedDate": "2020-11-30T12:00:48Z",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
