@@ -8,6 +8,7 @@
   "masVersion" : "1.28.11",
   "created" : "2020-09-23T09:44:49",
   "categories" : [ "WEB_SERVICES" ],
+  "hideAddButton" : true, 
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
@@ -53,7 +54,7 @@
   } ],
   "vaResolvers" : [ ],
   "tags" : [ {
-    "tag" : "helpUrl",
-    "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-servicenow.html"
+    "tag" : "viaCitrixReadyUrl",
+    "value" : "https://citrixready.citrix.com/zoho-corporation/zoho-crm-microapps.html"
   } ]
 }
