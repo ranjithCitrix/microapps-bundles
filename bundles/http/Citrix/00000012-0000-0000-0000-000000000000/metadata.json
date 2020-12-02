@@ -7,7 +7,7 @@
   "iconUrl" : "https://iws-stage-global-cdn-endpoint.azureedge.net/microapps/assets/exported/SuccessFactors.833a1da8b80b77391f222cbc6210e98c.svg",
   "masVersion" : "1.27.4",
   "created" : "2020-09-24T08:32:18",
-  "categories" : [ "INTERNAL_DEVELOPMENT" ],
+  "categories" : [ "VIA_CITRIX_READY" ],
   "supportsOAuthForActions" : false,
   "i18nLanguages" : [ "en" ],
   "apps" : [ {
