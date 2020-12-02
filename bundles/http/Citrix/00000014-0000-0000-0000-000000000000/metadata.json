@@ -24,5 +24,5 @@
     "tag" : "developerReadyUrl",
     "value" : "https://github.com/citrix-workspace/microapps-bundles/"
   } ],
-  "hideAddButton": false
+  "hideAddButton": true
 }
