@@ -4,92 +4,92 @@
   "id" : "com.sapho.services.dynamics.DynamicsCrmService",
   "version" : "0.1.5",
   "title" : "MS Dynamics CRM",
-  "description" : "Integrate with Microsoft Dynamics CRM to monitor and manage leads, opportunities, or cases without requiring extra logins",
+  "description" : "",
   "iconUrl" : "https://ctx-ws-cdn.cloud.com/assets/microapps/exported/ms-dynamics.28edaa50cab25022690f675dc95e059e.svg",
-  "masVersion" : "1.38.0",
+  "masVersion" : "1.48.0.1520b1383fab9ee25c43c0a67b3d90dd206dc9ff",
   "categories" : [ "WEB_SERVICES" ],
-  "created" : "2020-11-02T14:09:21",
+  "created" : "2020-12-07T17:24:54",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
-    "uuid" : "057ac0ed-2f11-41e5-a622-64c6c6c16780",
-    "title" : "Cases",
-    "numberOfEvents" : 2,
-    "action" : true
-  }, {
-    "uuid" : "05de0f9e-3b45-4001-90c6-5b9c66c9f1c8",
-    "title" : "Create Task",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "0c3cfd02-d8ee-4e1e-91ae-cf21b972bd7b",
-    "title" : "Leads",
-    "numberOfEvents" : 2,
-    "action" : true
-  }, {
-    "uuid" : "0f986334-6b3f-4825-a753-f6e5bd33f620",
-    "title" : "Accounts",
-    "numberOfEvents" : 2,
-    "action" : true
-  }, {
-    "uuid" : "131004b5-6585-4a17-b20c-78676ca75c78",
-    "title" : "Create Account",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "1390f857-fe02-4fc0-8ed0-f670cdae328c",
-    "title" : "Appointments",
-    "numberOfEvents" : 2,
-    "action" : true
-  }, {
-    "uuid" : "2cdc7f1f-5769-4806-9947-91a8d02b668d",
-    "title" : "Create Appointment",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "65c4b05c-55aa-402b-b5d0-c6c036beeea3",
-    "title" : "Create Case",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "6cf56319-41ce-4036-b0c4-5d990168e65f",
-    "title" : "Create Lead",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "746a2505-be21-4cc3-b388-f05dc37e6af6",
-    "title" : "Phone Calls",
-    "numberOfEvents" : 2,
-    "action" : true
-  }, {
-    "uuid" : "772124c9-08a7-4288-9606-7d890d5c401a",
-    "title" : "Create Opportunity",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "99a46353-9364-43cb-9e8e-3a70961724f3",
-    "title" : "Create Phone Call",
-    "numberOfEvents" : 0,
-    "action" : true
-  }, {
-    "uuid" : "a525424e-04e4-48fd-a172-d615f3113bb4",
-    "title" : "Contacts",
-    "numberOfEvents" : 2,
-    "action" : true
-  }, {
-    "uuid" : "b48ce452-c2de-46b4-a2c8-ff01b713b127",
+    "uuid" : "02ebf38d-6676-4030-af65-3071dbd288de",
     "title" : "Opportunities",
     "numberOfEvents" : 2,
     "action" : true
   }, {
-    "uuid" : "dde00f3a-6cc2-4804-afce-c7e457eb6a77",
+    "uuid" : "0504a77f-0db4-43d5-b113-7887ca942e97",
+    "title" : "Create Task",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "0e01f647-a244-4220-9bdb-c7febe827523",
+    "title" : "Phone Calls",
+    "numberOfEvents" : 2,
+    "action" : true
+  }, {
+    "uuid" : "14c66fb8-319e-4322-8a89-30d78fba8ae5",
+    "title" : "Create Contact",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "162deb77-0682-4813-8f7f-e2d3c76cb057",
     "title" : "Tasks",
     "numberOfEvents" : 2,
     "action" : true
   }, {
-    "uuid" : "e55d7f6a-9931-4e2b-865b-1b0b56794eec",
-    "title" : "Create Contact",
+    "uuid" : "266ef3fd-96ff-46db-8c89-5a7629309cb7",
+    "title" : "Cases",
+    "numberOfEvents" : 2,
+    "action" : true
+  }, {
+    "uuid" : "2748b056-6711-4c51-b977-f2f69fe41cb5",
+    "title" : "Create Lead",
     "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "2a812bfb-38fe-4793-abb0-52224ca0d7e2",
+    "title" : "Create Account",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "30d7a284-fbf0-40d3-974c-cc058c5ac09a",
+    "title" : "Create Case",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "344c31ed-631b-4375-88f3-c55c76d1ff62",
+    "title" : "Accounts",
+    "numberOfEvents" : 2,
+    "action" : true
+  }, {
+    "uuid" : "40c71391-efd4-488e-9430-eb89f3c883c2",
+    "title" : "Create Appointment",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "4aafd853-0f48-4c3b-844a-f52ce1aaa53b",
+    "title" : "Appointments",
+    "numberOfEvents" : 2,
+    "action" : true
+  }, {
+    "uuid" : "55354649-6484-4890-acec-8206073039b4",
+    "title" : "Create Phone Call",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "84175133-b8c2-4cba-a15d-28fe17981681",
+    "title" : "Create Opportunity",
+    "numberOfEvents" : 0,
+    "action" : true
+  }, {
+    "uuid" : "973bf683-619d-45c3-bb87-0c3a0f0e96a4",
+    "title" : "Contacts",
+    "numberOfEvents" : 2,
+    "action" : true
+  }, {
+    "uuid" : "ba3fec10-44ed-4e71-b58c-9bbe8e1fd3a3",
+    "title" : "Leads",
+    "numberOfEvents" : 2,
     "action" : true
   } ],
   "vaResolvers" : [ ],
