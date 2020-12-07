@@ -1997,7 +1997,7 @@
             "path" : "organizerKey",
             "primaryKeyCandidate" : true,
             "ignored" : false,
-            "columnType" : "LONG",
+            "columnType" : "STRING",
             "source" : "RECORD"
           }, {
             "name" : "password_required",
@@ -2838,7 +2838,7 @@
               "path" : "organizerKey",
               "primaryKeyCandidate" : true,
               "ignored" : false,
-              "columnType" : "LONG",
+              "columnType" : "STRING",
               "source" : "RECORD"
             }, {
               "name" : "password_required",
