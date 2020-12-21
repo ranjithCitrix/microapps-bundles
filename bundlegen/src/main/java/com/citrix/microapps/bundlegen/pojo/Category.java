@@ -16,5 +16,6 @@ public enum Category {
     COMING_SOON,
     LEGACY,
     PREVIEW,
-    VIA_CITRIX_READY
+    VIA_CITRIX_READY,
+    DEVELOPER_CONNECTED
 }
