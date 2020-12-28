@@ -7,7 +7,7 @@
   "description" : "Deploy the Citrix Google Calendar integration to schedule, view and edit the google calendar events and office hours from any device or intranet.",
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/yD6SH1hobi38Yd8b8VEQGLB9CyCNcK5P.png",
   "masVersion" : "1.49.0.ad5fc9f7aea839ce038d7ef6102d244196ddf1fe",
-  "categories" : [ "PREVIEW" ],
+  "categories" : [ "DEVELOPER_READY" ],
   "created" : "2020-12-14T12:54:47",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "en" ],

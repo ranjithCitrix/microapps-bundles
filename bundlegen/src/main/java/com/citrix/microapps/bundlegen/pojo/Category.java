@@ -15,7 +15,7 @@ public enum Category {
     BETA,
     COMING_SOON,
     LEGACY,
-    PREVIEW,
+    DEVELOPER_READY,
     VIA_CITRIX_READY,
     DEVELOPER_CONNECTED
 }

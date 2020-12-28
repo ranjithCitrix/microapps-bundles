@@ -6,7 +6,7 @@
   "description" : "Deploy the Webex Meetings integration to schedule a meeting from any device or intranet.",
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/ZwCDa3H83YxLgcdqivztCfNvn9Kox7TS.png",
   "masVersion" : "1.39.0",
-  "categories" : [ "PREVIEW" ],
+  "categories" : [ "DEVELOPER_READY" ],
   "created" : "2020-11-06T12:50:24",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
