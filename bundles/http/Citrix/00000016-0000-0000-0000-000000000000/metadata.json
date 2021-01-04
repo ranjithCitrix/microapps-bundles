@@ -34,6 +34,9 @@
    "tags" : [ {
    "tag" : "helpUrl",
    "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-google-calendar.html"
-   }
+   }, {
+    "tag" : "termsOfUseUrl",
+    "value" : "https://citrixready.citrix.com/a2k-partners-llc/slack.html" 
+	}
  ]
 }
