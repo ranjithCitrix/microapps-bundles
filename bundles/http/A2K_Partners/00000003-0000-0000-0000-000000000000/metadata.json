@@ -51,5 +51,7 @@
   "tags" : [ {
     "tag" : "viaCitrixReadyUrl",
     "value" : "https://citrixready.citrix.com/a2k-partners-llc/slack.html"
-  } ]
+  }, {
+    "tag" : "termsOfUseUrl",
+    "value" : "https://citrixready.citrix.com/a2k-partners-llc/slack.html"} ]
 }
