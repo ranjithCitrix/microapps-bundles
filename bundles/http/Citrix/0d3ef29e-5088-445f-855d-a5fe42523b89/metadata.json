@@ -6,7 +6,7 @@
   "description" : "Deploy the Citrix GoToMeeting integration to schedule GoToMeeting from any device or intranet.",
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/gRxeNuOIFk7pIfA2heNyRAXt7MSncZzb.png",
   "masVersion" : "1.37.3.c05258560b15810ceb9900cb0855f9f98ee8c7be",
-  "categories" : [ "PREVIEW" ],
+  "categories" : [ "INTERNAL_DEVELOPMENT" ],
   "created" : "2020-11-02T11:10:36",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [  "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN"  ],
