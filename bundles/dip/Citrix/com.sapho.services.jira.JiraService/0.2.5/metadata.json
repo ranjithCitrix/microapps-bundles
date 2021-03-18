@@ -10,7 +10,7 @@
   "masVersion" : "1.58.2.cc76979da2388bf0a5ad9ed01a94a0b7eefb97f8",
   "categories" : [ "LEGACY" ],
   "created" : "2021-02-01T13:14:59",
-  "deprecatedDate": "2021-05-15T00:00:00Z",
+  "deprecatedDate": "2021-03-17T00:00:00Z",
   "eolDateWithSupport": "2021-08-15T00:00:00Z",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
