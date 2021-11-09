@@ -3,7 +3,7 @@
   "vendor" : "Citrix",
   "id" : "e80ec039-95c1-4c66-bb94-a6cb7a1652fb",
   "trackingUuid" : "4fde839a-f215-4f57-a0ef-dd16d84216d2",
-  "title" : "Canvas LMS",
+  "title" : "Canvas LMS test",
   "description" : "Deploy the Canvas LMS integration to view the course and its related details as a student, and as a teacher to create a course announcement and view/add course members and view student's grades.",
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/TEGJf2vhv8wexUsRk0l7kfyJlLMcC7R2.png",
   "masVersion" : "1.101.0.b2c44a647767b3456fd79adbd8b61d80e8963b9f",
