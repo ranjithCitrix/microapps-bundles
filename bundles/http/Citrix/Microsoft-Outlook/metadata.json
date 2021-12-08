@@ -4,6 +4,7 @@
   "id" : "4b449ffb-d1fd-4244-b68c-7dac9c3b80cf",
   "trackingUuid" : "f92885c2-751f-42d1-8b70-273327275f83",
   "title" : "Microsoft Outlook",
+  "description" : "Deploy the Microsoft Outlook integration to schedule Event and Office Hours, edit Event and Office Hours, and receive a notification before an hour the event start time."
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/ctMmybALGSmNfPLyVbZY1LKAtVBAA0Ni.png",
   "masVersion" : "1.135.0.a8d85f5141c63ccfc237728fa2b06a786be0e662",
   "categories" : ["WEB_SERVICES"] ,
@@ -13,7 +14,7 @@
   "apps" : [ {
     "uuid" : "50504b37-9550-40f5-b55c-1de0d769179f",
     "trackingUuid" : "7c0f4985-26ff-471a-94ea-c042adda7aa3",
-    "title" : "My Calendar #2",
+    "title" : "My Calendar",
     "numberOfEvents" : 1,
     "action" : true
   }, {
@@ -29,7 +30,10 @@
     "numberOfEvents" : 0,
     "action" : true
   } ],
-  "tags" : [ ],
+  "tags" : [
+    "tag" : "helpUrl",
+    "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-ms-outlook.html"
+   ],
   "scriptMetadata" : {
     "originalFileName" : "script.js",
     "storedFileName" : "script.js",
@@ -38,3 +42,4 @@
   },
   "hideAddButton" : false
 }
+
