@@ -172,8 +172,7 @@ async function createOutlookOneTimeEventCurrentTimezone({
         throw new Error(`Create Outlook onetime event with current timezone failed ${responseOfcreateOutlookOneTimeEventCurrentTimezone.status}:${responseOfcreateOutlookOneTimeEventCurrentTimezone.statusText}`);
     }
     const userId = [actionParameters.userId];
-    await calendarView(client, dataStore, userId, startDate);
-    await myEvents(client, dataStore, userId)
+    await Promise.all([calendarView(client, dataStore, userId, startDate) , myEvents(client, dataStore, userId)])
 }
 
 async function createOutlookOneTimeEventCustomTimezone({
@@ -249,8 +248,7 @@ async function createOutlookOneTimeEventCustomTimezone({
         throw new Error(`Create Outlook onetime with event custom timezone failed (${responseOfcreateOutlookOneTimeEventCustomTimezone.status}: ${responseOfcreateOutlookOneTimeEventCustomTimezone.statusText})`);
     }
     const userId = [actionParameters.userId];
-    await calendarView(client, dataStore, userId, startDate);
-    await myEvents(client, dataStore, userId)
+    await Promise.all([calendarView(client, dataStore, userId, startDate) , myEvents(client, dataStore, userId)])
 }
 
 async function createRecurringEventCurrentTimeZone({
@@ -338,8 +336,7 @@ async function createRecurringEventCurrentTimeZone({
         throw new Error(`Create Outlook recurring event with current timezone failed (${responseOfcreateRecurringEventCurrentTimeZone.status}: ${responseOfcreateRecurringEventCurrentTimeZone.statusText})`);
     }
     const userId = [actionParameters.userId];
-    await calendarView(client, dataStore, userId, startDate);
-    await myEvents(client, dataStore, userId)
+    await Promise.all([calendarView(client, dataStore, userId, startDate) , myEvents(client, dataStore, userId)])
 }
 
 async function createRecurringEventCustomTimeZone({
@@ -429,8 +426,7 @@ async function createRecurringEventCustomTimeZone({
         throw new Error(`Create Outlook recurring event with custom timezone failed  (${responseOfcreateRecurringEventCustomTimeZone.status}: ${responseOfcreateRecurringEventCustomTimeZone.statusText})`);
     }
     const userId = [actionParameters.userId];
-    await calendarView(client, dataStore, userId, startDate);
-    await myEvents(client, dataStore, userId)
+    await Promise.all([calendarView(client, dataStore, userId, startDate) , myEvents(client, dataStore, userId)])
 };
 
 async function createRecurringOfficeHoursWithCurrentTimezone({
@@ -481,8 +477,7 @@ async function createRecurringOfficeHoursWithCurrentTimezone({
         throw new Error(`Create Outlook Office Hours event with current timezone failed  (${responseOfcreateRecurringOfficeHoursWithCurrentTimezone.status}: ${responseOfcreateRecurringOfficeHoursWithCurrentTimezone.statusText})`);
     }
     const userId = [actionParameters.userId];
-    await calendarView(client, dataStore, userId, startDate);
-    await myEvents(client, dataStore, userId)
+    await Promise.all([calendarView(client, dataStore, userId, startDate) , myEvents(client, dataStore, userId)])
 };
 
 integration.define({
