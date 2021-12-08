@@ -2,7 +2,6 @@ const moment = library.load('moment-timezone');
 const uuid = library.load('uuid');
 const pageSize = 100;
 
-//full synchronization code
 async function fullSync({ client, dataStore }) {
     let userId = [];
     let URL = `/v1.0/users?$top=${pageSize}`;
@@ -32,7 +31,6 @@ async function fullSync({ client, dataStore }) {
     ])
 }
 
-// calendar View dataloading code
 async function calendarView(client, dataStore, userId, startDate) {
     const endDate = moment.utc().add(30, 'd').format();
     for (const id of userId) {
@@ -78,7 +76,6 @@ async function calendarView(client, dataStore, userId, startDate) {
     }
 }
 
-// myEvents dataloading code
 async function myEvents(client, dataStore, userId) {
     for (const id of userId) {
         const myEventRequest = await client.fetch(`/v1.0/users/${id}/calendar/events?$top=${pageSize}`);
@@ -100,14 +97,12 @@ async function myEvents(client, dataStore, userId) {
     }
 }
 
-//service action for Create One Time Event with Current Timezone
 async function createOutlookOneTimeEventCurrentTimezone({
     dataStore,
     client,
     actionParameters,
 }) {
-    console.log('hello')
-    const startDate = moment.utc().subtract(30, 'm').format();
+    const startDate = moment.utc().subtract(1, 'm').format();
     const responseOfcreateOutlookOneTimeEventCurrentTimezone = await client.fetch(
         `v1.0/me/events`,
         {
@@ -173,29 +168,25 @@ async function createOutlookOneTimeEventCurrentTimezone({
             }),
         }
     );
-    console.log(JSON.stringify(responseOfcreateOutlookOneTimeEventCurrentTimezone));
     if (!responseOfcreateOutlookOneTimeEventCurrentTimezone.ok) {
-        throw new Error(`createOutlookOneTimeEventCurrentTimezone (${responseOfcreateOutlookOneTimeEventCurrentTimezone.status}: ${responseOfcreateOutlookOneTimeEventCurrentTimezone.statusText})`);
+        throw new Error(`Create Outlook onetime event with current timezone failed ${responseOfcreateOutlookOneTimeEventCurrentTimezone.status}:${responseOfcreateOutlookOneTimeEventCurrentTimezone.statusText}`);
     }
-    const user_id = [actionParameters.userId];
-    console.log(...user_id);
-    await calendarView(client, dataStore, user_id, startDate);
-    await myEvents(client, dataStore, user_id)
+    const userId = [actionParameters.userId];
+    await calendarView(client, dataStore, userId, startDate);
+    await myEvents(client, dataStore, userId)
 }
 
-//service action for Create One Time Event with Custom Timezone
 async function createOutlookOneTimeEventCustomTimezone({
     dataStore,
     client,
     actionParameters,
 }) {
-    const startDate = moment.utc().subtract(30, 'm').format();
+    const startDate = moment.utc().subtract(1, 'm').format();
     const responseOfcreateOutlookOneTimeEventCustomTimezone = await client.fetch(
         `/v1.0/me/events`,
         {
             method: "POST",
             body: JSON.stringify({
-
                 subject: actionParameters.subject,
                 body: {
                     contentType: "HTML",
@@ -247,36 +238,32 @@ async function createOutlookOneTimeEventCustomTimezone({
                         type: actionParameters.type6
                     }
                 ],
-                allowNewTimeProposals: actionParameters.allowNewTimeProposals,
+                allowNewTimeProposals: true,
                 isOnlineMeeting: actionParameters.isOnlineMeeting,
                 onlineMeetingProvider: actionParameters.onlineMeetingProvider
 
             }),
         }
     );
-    //console.log(JSON.stringify(responseOfcreateOutlookOneTimeEventCustomTimezone));
     if (!responseOfcreateOutlookOneTimeEventCustomTimezone.ok) {
-        throw new Error(`createOutlookOneTimeEventCustomTimezone (${responseOfcreateOutlookOneTimeEventCustomTimezone.status}: ${responseOfcreateOutlookOneTimeEventCustomTimezone.statusText})`);
+        throw new Error(`Create Outlook onetime with event custom timezone failed (${responseOfcreateOutlookOneTimeEventCustomTimezone.status}: ${responseOfcreateOutlookOneTimeEventCustomTimezone.statusText})`);
     }
-    const user_id = [actionParameters.userId];
-    console.log(user_id);
-    await calendarView(client, dataStore, user_id, startDate);
-    await myEvents(client, dataStore, user_id)
+    const userId = [actionParameters.userId];
+    await calendarView(client, dataStore, userId, startDate);
+    await myEvents(client, dataStore, userId)
 }
 
-//service action for Create Recurring Event with Current Timezone
 async function createRecurringEventCurrentTimeZone({
     dataStore,
     client,
     actionParameters,
 }) {
-    const startDate = moment.utc().subtract(30, 'm').format();
+    const startDate = moment.utc().subtract(1, 'm').format();
     const responseOfcreateRecurringEventCurrentTimeZone = await client.fetch(
         `/v1.0/me/events`,
         {
             method: "POST",
             body: JSON.stringify({
-
                 subject: actionParameters.subject,
                 body: {
                     contentType: "HTML",
@@ -347,23 +334,20 @@ async function createRecurringEventCurrentTimeZone({
             }),
         }
     );
-    //console.log(JSON.stringify(responseOfcreateRecurringEventCurrentTimeZone));
     if (!responseOfcreateRecurringEventCurrentTimeZone.ok) {
-        throw new Error(`createRecurringEventCurrentTimeZone (${responseOfcreateRecurringEventCurrentTimeZone.status}: ${responseOfcreateRecurringEventCurrentTimeZone.statusText})`);
+        throw new Error(`Create Outlook recurring event with current timezone failed (${responseOfcreateRecurringEventCurrentTimeZone.status}: ${responseOfcreateRecurringEventCurrentTimeZone.statusText})`);
     }
-    const user_id = [actionParameters.userId];
-    console.log(user_id);
-    await calendarView(client, dataStore, user_id, startDate);
-    await myEvents(client, dataStore, user_id)
+    const userId = [actionParameters.userId];
+    await calendarView(client, dataStore, userId, startDate);
+    await myEvents(client, dataStore, userId)
 }
 
-//service action for Create Recurring Event with Custom Timezone 
 async function createRecurringEventCustomTimeZone({
     dataStore,
     client,
     actionParameters,
 }) {
-    const startDate = moment.utc().subtract(30, 'm').format();
+    const startDate = moment.utc().subtract(1, 'm').format();
     const responseOfcreateRecurringEventCustomTimeZone = await client.fetch(
         `/v1.0/me/events`,
         {
@@ -441,23 +425,20 @@ async function createRecurringEventCustomTimeZone({
                 }
             })
         })
-    //console.log(JSON.stringify(responseOfcreateRecurringEventCustomTimeZone));
     if (!responseOfcreateRecurringEventCustomTimeZone.ok) {
-        throw new Error(`createRecurringEventCustomTimeZone (${responseOfcreateRecurringEventCustomTimeZone.status}: ${responseOfcreateRecurringEventCustomTimeZone.statusText})`);
+        throw new Error(`Create Outlook recurring event with custom timezone failed  (${responseOfcreateRecurringEventCustomTimeZone.status}: ${responseOfcreateRecurringEventCustomTimeZone.statusText})`);
     }
-    const user_id = [actionParameters.userId];
-    console.log(user_id);
-    await calendarView(client, dataStore, user_id, startDate);
-    await myEvents(client, dataStore, user_id)
+    const userId = [actionParameters.userId];
+    await calendarView(client, dataStore, userId, startDate);
+    await myEvents(client, dataStore, userId)
 };
 
-//service action for Create Recurring Office Hours with Current Timezone
 async function createRecurringOfficeHoursWithCurrentTimezone({
     dataStore,
     client,
     actionParameters,
 }) {
-    const startDate = moment.utc().subtract(30, 'm').format();
+    const startDate = moment.utc().subtract(1, 'm').format();
     const responseOfcreateRecurringOfficeHoursWithCurrentTimezone = await client.fetch(
         `/v1.0/me/events`,
         {
@@ -496,16 +477,13 @@ async function createRecurringOfficeHoursWithCurrentTimezone({
             }
             )
         })
-    //console.log(JSON.stringify(responseOfcreateRecurringOfficeHoursWithCurrentTimezone));
     if (!responseOfcreateRecurringOfficeHoursWithCurrentTimezone.ok) {
-        throw new Error(`createRecurringOfficeHoursWithCurrentTimezone (${responseOfcreateRecurringOfficeHoursWithCurrentTimezone.status}: ${responseOfcreateRecurringOfficeHoursWithCurrentTimezone.statusText})`);
+        throw new Error(`Create Outlook Office Hours event with current timezone failed  (${responseOfcreateRecurringOfficeHoursWithCurrentTimezone.status}: ${responseOfcreateRecurringOfficeHoursWithCurrentTimezone.statusText})`);
     }
-    const user_id = [actionParameters.userId];
-    console.log(user_id);
-    await calendarView(client, dataStore, user_id, startDate);
-    await myEvents(client, dataStore, user_id)
+    const userId = [actionParameters.userId];
+    await calendarView(client, dataStore, userId, startDate);
+    await myEvents(client, dataStore, userId)
 };
-
 
 integration.define({
     synchronizations: [
@@ -729,7 +707,6 @@ integration.define({
         ],
     },
     actions: [
-        //createOutlookOneTimeEventCurrentTimezone
         {
             name: "createOutlookOneTimeEventCurrentTimezone",
             parameters: [
@@ -816,7 +793,6 @@ integration.define({
             ],
             function: createOutlookOneTimeEventCurrentTimezone,
         },
-        //createOutlookOneTimeEventCustomTimezone
         {
             name: "createOutlookOneTimeEventCustomTimezone",
             parameters: [
@@ -916,7 +892,6 @@ integration.define({
             ],
             function: createOutlookOneTimeEventCustomTimezone,
         },
-        //createRecurringEventCurrentTimeZone
         {
             name: "createRecurringEventCurrentTimeZone",
             parameters: [
@@ -1023,7 +998,6 @@ integration.define({
             ],
             function: createRecurringEventCurrentTimeZone,
         },
-        //createRecurringEventCustomTimeZone
         {
             name: "createRecurringEventCustomTimeZone",
             parameters: [
@@ -1138,7 +1112,6 @@ integration.define({
             ],
             function: createRecurringEventCustomTimeZone,
         },
-        //createRecurringOfficeHoursWithCurrentTimezone
         {
             name: "createRecurringOfficeHoursWithCurrentTimezone",
             parameters: [
@@ -1192,98 +1165,3 @@ integration.define({
 
     ]
 });
-
-async function fullSync({ client, dataStore }) {
-	let userId = [];
-	let URL = `/v1.0/users?$top=${pageSize}`;
-	let nextPage = '';
-	do {
-		const userRequest = await client.fetch(URL);
-		if (!userRequest.ok) {
-			throw new Error(`Users sync failed ${userRequest.status}:${userRequest.statusText}.`);
-		}
-		const userResponse = await userRequest.json();
-		for (const value of userResponse.value) {
-			userId.push(value.id);
-			dataStore.save('user', {
-				id: value?.id ?? null,
-				mail: value?.mail ?? null,
-				user_principal_name: value?.userPrincipalName ?? null,
-				display_name: value?.displayName ?? null
-			});
-		}
-		nextPage = userResponse['@odata.nextLink'] ?? null;
-		if (nextPage != null) URL = `/v1.0/users?${nextPage.split(`?`)[1]}`;
-	} while (nextPage);
-	await Promise.all([
-		calendarView(client, dataStore, userId),
-		myEvents(client, dataStore, userId)
-	])
-}
-
-async function calendarView(client, dataStore, userId) {
-const startDate = moment.utc().subtract(1, 'd').format();
-const endDate = moment.utc().add(30, 'd').format();
-	for (const id of userId) {
-		const calendarViewRequest = await client.fetch(
-			`/v1.0/users/${id}/calendarView?startdatetime=${startDate}&enddatetime=${endDate}&$top=${pageSize}`
-		);
-		if (!calendarViewRequest.ok && calendarViewRequest.status != 404) {
-			throw new Error(`Calendar sync failed ${calendarViewRequest.status}:${calendarViewRequest.statusText}.`);
-		}
-		const calendarViewResponse = await calendarViewRequest.json();
-		if (calendarViewRequest.ok) {
-			for (const calendarValue of calendarViewResponse.value) {
-				dataStore.save('calendar_view', {
-					body_content: calendarValue?.body?.content ?? null,
-					body_preview: calendarValue?.bodyPreview ?? null,
-					end_date_time: calendarValue?.end?.dateTime ?? null,
-					i_cal_u_id: calendarValue?.iCalUId ?? null,
-					id: calendarValue?.id ?? null,
-					is_cancelled: calendarValue?.isCancelled ?? null,
-					is_online_meeting: calendarValue?.isOnlineMeeting ?? null,
-					location_display_name: calendarValue?.location?.displayName ?? null,
-					online_meeting_join_url: calendarValue.onlineMeeting?.joinUrl ?? null,
-					online_meeting_provider: calendarValue?.onlineMeetingProvider ?? null,
-					organizer_email_address_a: calendarValue?.organizer?.emailAddress?.address ?? null,
-					organizer_email_address_n: calendarValue?.organizer?.emailAddress?.name ?? null,
-					original_start_time_zone: calendarValue?.originalStartTimeZone ?? null,
-					series_master_id: calendarValue?.seriesMasterId ?? null,
-					start_date_time: calendarValue?.start?.dateTime ?? null,
-					subject: calendarValue?.subject ?? null
-				});
-				for (const attendees of calendarValue.attendees) {
-					dataStore.save('calender_view_attendees', {
-						unique_id: uuid.v4(),
-						parent_i_cal_u_id: calendarValue?.iCalUId ?? null,
-						root_i_cal_u_id: calendarValue?.iCalUId ?? null,
-						email_address_address: attendees?.emailAddress?.address ?? null,
-						email_address_name: attendees?.emailAddress?.name ?? null,
-						type: attendees?.type ?? null
-					});
-				}
-			}
-		}
-	}
-}
-
-async function myEvents(client, dataStore, userId) {
-	for (const id of userId) {
-		const myEventRequest = await client.fetch(`/v1.0/users/${id}/calendar/events?$top=${pageSize}`);
-		if (!myEventRequest.ok && myEventRequest.status != 404) {
-			throw new Error(`Events sync failed ${myEventRequest.status}:${myEventRequest.statusText}`);
-		}
-		const myEventResponse = await myEventRequest.json();
-		if (myEventRequest.ok) {
-			for (const myEventsValue of myEventResponse.value) {
-				dataStore.save('my_events', {
-					i_cal_u_id: myEventsValue?.iCalUId ?? null,
-					id: myEventsValue?.id ?? null,
-					recurrence_pattern_day_of: myEventsValue?.recurrence?.pattern?.dayOfMonth ?? null,
-					recurrence_pattern_type: myEventsValue?.recurrence?.pattern?.type ?? null,
-					recurrence_range_end_date: myEventsValue?.recurrence?.range?.endDate ?? null
-				});
-			}
-		}
-	}
-}
