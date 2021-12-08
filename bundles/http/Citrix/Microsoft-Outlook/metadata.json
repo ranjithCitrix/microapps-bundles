@@ -20,20 +20,20 @@
   }, {
     "uuid" : "88a04c41-1c51-44ad-8a39-c7714f7e2f7d",
     "trackingUuid" : "541cd3f0-0034-43f8-85f1-cf4f0bc50adb",
-    "title" : "My Office Hours #2",
+    "title" : "My Office Hours",
     "numberOfEvents" : 0,
     "action" : true
   }, {
     "uuid" : "ab428217-90b8-458f-b8ef-be3ee2a35a60",
     "trackingUuid" : "e6210fc5-5c7c-474e-99e1-4107955ac863",
-    "title" : "Create Event #2",
+    "title" : "Create Event",
     "numberOfEvents" : 0,
     "action" : true
   } ],
-  "tags" : [
+  "tags" : [{
     "tag" : "helpUrl",
     "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-ms-outlook.html"
-   ],
+  }],
   "scriptMetadata" : {
     "originalFileName" : "script.js",
     "storedFileName" : "script.js",
@@ -42,4 +42,3 @@
   },
   "hideAddButton" : false
 }
-
