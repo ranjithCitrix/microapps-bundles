@@ -1,13 +1,14 @@
 {
   "type" : "HTTP",
   "vendor" : "Citrix",
-  "id" : "82ce88e5-306a-4501-80ca-55b3147b3b5e",
+  "id" : "4b449ffb-d1fd-4244-b68c-7dac9c3b80cf",
   "trackingUuid" : "39206030-5dee-47ea-a673-68c8317f554d",
-  "title" : "MS Outlook Second Set",
-  "iconUrl" : "exported/HTTP.9b81384ab8a11658b635e7542ff6416c.svg",
+  "title" : "Microsoft Outlook IF-285",
+  "description" : "Deploy the Microsoft Outlook integration to schedule Event and Office Hours, edit Event and Office Hours, and receive a notification before an hour the event start time.",
+  "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/LDZp7vNefzsQ0yfWFcBuk6UOIYfTkbMz.png",
   "masVersion" : "1.136.0.843ffba479fd46f0a40992f38bd38a0ec4471dad",
-  "categories" : [ ],
-  "created" : "2021-12-10T06:45:59",
+  "categories" : ["WEB_SERVICES"],
+  "created" : "2021-12-10T11:02:49",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
@@ -29,7 +30,10 @@
     "numberOfEvents" : 1,
     "action" : true
   } ],
-  "tags" : [ ],
+   "tags" : [{
+   "tag" : "helpUrl",
+   "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-ms-outlook.html"
+   }],
   "scriptMetadata" : {
     "originalFileName" : "script.js",
     "storedFileName" : "script.js",

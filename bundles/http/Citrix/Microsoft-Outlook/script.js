@@ -1,5 +1,4 @@
 integration.define({
-  
     synchronizations: [
         {
             name: 'Outlook',
@@ -457,10 +456,9 @@ async function myEvents(client, dataStore, userIds) {
 
 
 async function editRecurringEventwithCurrentTimezone(param) {
-    const { client, store, actionParameters } = param
+    const { client, dataStore, actionParameters } = param
     const start = moment().utc().subtract(1, 'm').format()
     const end = moment().utc().add(30, 'd').format()
-    await calendarView(client, store, [actionParameters.userId], start, end)
     const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
@@ -539,15 +537,19 @@ async function editRecurringEventwithCurrentTimezone(param) {
     if (!editRecurringEventReqeust.ok) {
         throw new Error(editRecurringEventReqeust.text())
     }
-    await calendarView(client, store, [actionParameters.userId], start, end)
+    const userIds = [actionParameters.userIds];
+  await Promise.all([
+    calendarView(client, dataStore, userIds, start),
+    myEvents(client, dataStore, userIds),
+  ]);
 }
 
 
 async function editRecurringEventwithCustomTimezone(param) {
-    const { client, store, actionParameters } = param
+    const { client, dataStore, actionParameters } = param
     const start = moment().utc().subtract(1, 'm').format()
     const end = moment().utc().add(30, 'd').format()
-    await calendarView(client, store, [actionParameters.userId], start, end)
+    await calendarView(client, dataStore, [actionParameters.userId], start, end)
     const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
@@ -626,16 +628,20 @@ async function editRecurringEventwithCustomTimezone(param) {
     if (!editRecurringEventReqeust.ok) {
         throw new Error(editRecurringEventReqeust.text())
     }
-    await calendarView(client, store, [actionParameters.userId], start, end)
+    const userIds = [actionParameters.userIds];
+    await Promise.all([
+      calendarView(client, dataStore, userIds, start),
+      myEvents(client, dataStore, userIds),
+    ]);
 }
 
 
 
 async function editRecurringOfficeHoursWithCurrentTimezone(param) {
-    const { client, store, actionParameters } = param
+    const { client, dataStore, actionParameters } = param
     const start = moment().utc().subtract(1, 'm').format()
     const end = moment().utc().add(30, 'd').format()
-    await calendarView(client, store, [actionParameters.userId], start, end)
+    await calendarView(client, dataStore, [actionParameters.userId], start, end)
     const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
@@ -674,14 +680,18 @@ async function editRecurringOfficeHoursWithCurrentTimezone(param) {
     if (!editRecurringEventReqeust.ok) {
         throw new Error(editRecurringEventReqeust.text())
     }
-    await calendarView(client, store, [actionParameters.userId], start, end)
+    const userIds = [actionParameters.userIds];
+    await Promise.all([
+      calendarView(client, dataStore, userIds, start),
+      myEvents(client, dataStore, userIds),
+    ]);
 }
 
 async function editRecurringOfficeHoursWithCustomTimezone(param) {
-    const { client, store, actionParameters } = param
+    const { client, dataStore, actionParameters } = param
     const start = moment().utc().subtract(1, 'm').format()
     const end = moment().utc().add(30, 'd').format()
-    await calendarView(client, store, [actionParameters.userId], start, end)
+    await calendarView(client, dataStore, [actionParameters.userId], start, end)
     const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
@@ -720,7 +730,11 @@ async function editRecurringOfficeHoursWithCustomTimezone(param) {
     if (!editRecurringEventReqeust.ok) {
         throw new Error(editRecurringEventReqeust.text())
     }
-
+    const userIds = [actionParameters.userIds];
+    await Promise.all([
+      calendarView(client, dataStore, userIds, start),
+      myEvents(client, dataStore, userIds),
+    ]);
 }
 
 async function refresh(param) {
@@ -730,4 +744,3 @@ async function refresh(param) {
         myEvents(client, dataStore, [actionParameters.id])
     ])
 }
-
