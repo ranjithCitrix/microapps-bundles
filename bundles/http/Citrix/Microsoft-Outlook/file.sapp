@@ -33018,7 +33018,7 @@
   "services" : [ {
     "id" : 3024,
     "uuid" : "82ce88e5-306a-4501-80ca-55b3147b3b5e",
-    "version" : 27,
+    "version" : 30,
     "title" : "MS Outlook Second Set",
     "serviceType" : "GWSC",
     "group" : "GWSC:JSON",
@@ -33145,7 +33145,8 @@
             }, {
               "name" : "end_date_time",
               "primaryKey" : false,
-              "type" : "DATETIME",
+              "type" : "STRING",
+              "length" : 255,
               "mandatory" : false
             }, {
               "name" : "is_cancelled",
@@ -33202,7 +33203,8 @@
             }, {
               "name" : "start_date_time",
               "primaryKey" : false,
-              "type" : "DATETIME",
+              "type" : "STRING",
+              "length" : 255,
               "mandatory" : false
             }, {
               "name" : "subject",
@@ -33316,8 +33318,8 @@
           "fullSyncConfigured" : true,
           "incrementalSyncConfigured" : false,
           "scriptSourceFunctionLocationFullSync" : {
-            "startLine" : 1095,
-            "endLine" : 1101
+            "startLine" : 355,
+            "endLine" : 361
           }
         } ],
         "actions" : [ {
@@ -33441,8 +33443,8 @@
             "required" : false
           } ],
           "scriptSourceFunctionLocation" : {
-            "startLine" : 1829,
-            "endLine" : 1913
+            "startLine" : 458,
+            "endLine" : 542
           }
         }, {
           "name" : "EditRecurringEventwithCustomTimezone",
@@ -33565,8 +33567,8 @@
             "required" : false
           } ],
           "scriptSourceFunctionLocation" : {
-            "startLine" : 1916,
-            "endLine" : 2000
+            "startLine" : 545,
+            "endLine" : 629
           }
         }, {
           "name" : "EditRecurringOfficeHoursWithCurrentTimezone",
@@ -33633,8 +33635,8 @@
             "required" : false
           } ],
           "scriptSourceFunctionLocation" : {
-            "startLine" : 2004,
-            "endLine" : 2048
+            "startLine" : 633,
+            "endLine" : 677
           }
         }, {
           "name" : "EditRecurringOfficeHoursWithCustomTimezone",
@@ -33701,732 +33703,8 @@
             "required" : false
           } ],
           "scriptSourceFunctionLocation" : {
-            "startLine" : 2050,
-            "endLine" : 2094
-          }
-        }, {
-          "name" : "createOutlookOneTimeEventCurrentTimezone",
-          "uniqueId" : "4d59cc57-4482-4da5-8f3f-0f3480246db7",
-          "parameters" : [ {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "location",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "onlineMeetingProvider",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1198,
-            "endLine" : 1278
-          }
-        }, {
-          "name" : "createOutlookOneTimeEventCustomTimezone",
-          "uniqueId" : "9515c82e-f1b8-46a4-be91-b04bf0c58115",
-          "parameters" : [ {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "endDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "timezone",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "onlineMeetingProvider",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "location",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDate",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1281,
-            "endLine" : 1359
-          }
-        }, {
-          "name" : "createRecurringEventCurrentTimeZone",
-          "uniqueId" : "768c621a-51f9-431b-8a01-5e9df61bd9fe",
-          "parameters" : [ {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "onlineMeetingProvider",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "emai2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "enddate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "dayOfMonth",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "days",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "location",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "recurrencetype",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1362,
-            "endLine" : 1452
-          }
-        }, {
-          "name" : "createRecurringEventCustomTimeZone",
-          "uniqueId" : "f82485f6-6bd1-4202-b1e9-77176dbfdcc4",
-          "parameters" : [ {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "endDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "timezone",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "onlineMeetingProvider",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "emai2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "recurEndDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "dayOfMonth",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "days",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "location",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "recurrencetype",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1455,
-            "endLine" : 1546
-          }
-        }, {
-          "name" : "createRecurringOfficeHoursWithCurrentTimezone",
-          "uniqueId" : "da1190fe-a203-4617-a166-27787c560e40",
-          "parameters" : [ {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "enddate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "dayOfMonth",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "days",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "recurrencetype",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1549,
-            "endLine" : 1601
-          }
-        }, {
-          "name" : "CreateRecurringOfficeHourswithCustomTimezone",
-          "uniqueId" : "5d9d82a6-154f-4cee-af26-bd4ed9cbf767",
-          "parameters" : [ {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "timezone",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "dayOfMonth",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "days",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "recurrencetype",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "recurEndDate",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1604,
-            "endLine" : 1659
-          }
-        }, {
-          "name" : "EditOneTimeWithCurrentTimezone",
-          "uniqueId" : "1b649cb9-cfbe-4276-bb28-aff6eec6a82e",
-          "parameters" : [ {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "timezone",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endDateTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "location",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "onlineMeetingProvider",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "id",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1661,
-            "endLine" : 1746
-          }
-        }, {
-          "name" : "EditOneTimeEventWithCustomTimezone",
-          "uniqueId" : "041bfe97-db7d-43c8-ad52-e384f08a5b46",
-          "parameters" : [ {
-            "name" : "subject",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "content",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "timezone",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startDate",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "type6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email1",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email2",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email3",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email4",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email5",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "email6",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "location",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "isOnlineMeeting",
-            "type" : "BOOLEAN",
-            "required" : false
-          }, {
-            "name" : "onlineMeetingProvider",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "startTime",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "id",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "userId",
-            "type" : "STRING",
-            "required" : false
-          }, {
-            "name" : "endTime",
-            "type" : "STRING",
-            "required" : false
-          } ],
-          "scriptSourceFunctionLocation" : {
-            "startLine" : 1748,
-            "endLine" : 1827
+            "startLine" : 679,
+            "endLine" : 723
           }
         }, {
           "name" : "refresh",
@@ -34445,8 +33723,8 @@
             "required" : true
           } ],
           "scriptSourceFunctionLocation" : {
-            "startLine" : 2096,
-            "endLine" : 2102
+            "startLine" : 725,
+            "endLine" : 731
           }
         } ],
         "webhookListeners" : [ ],
@@ -34528,7 +33806,7 @@
         "title" : "end_date_time",
         "displayName" : "End Date Time",
         "attributeName" : "end_date_time",
-        "type" : "TIMESTAMP",
+        "type" : "STRING",
         "nullable" : true,
         "autoIncrement" : false,
         "roleType" : "DB_COLUMN",
@@ -34668,7 +33946,7 @@
         "title" : "start_date_time",
         "displayName" : "Start Date Time",
         "attributeName" : "start_date_time",
-        "type" : "TIMESTAMP",
+        "type" : "STRING",
         "nullable" : true,
         "autoIncrement" : false,
         "roleType" : "DB_COLUMN",

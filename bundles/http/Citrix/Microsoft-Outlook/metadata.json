@@ -7,7 +7,7 @@
   "iconUrl" : "exported/HTTP.9b81384ab8a11658b635e7542ff6416c.svg",
   "masVersion" : "1.136.0.843ffba479fd46f0a40992f38bd38a0ec4471dad",
   "categories" : [ ],
-  "created" : "2021-12-08T10:46:01",
+  "created" : "2021-12-10T06:45:59",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
@@ -33,7 +33,7 @@
   "scriptMetadata" : {
     "originalFileName" : "script.js",
     "storedFileName" : "script.js",
-    "checksum" : "248E2E5B2F2A2B38F4DBAB2FAAF25875",
+    "checksum" : "6F94BC2ED525E7ADD79598151DAACBEC",
     "apiVersion" : "1.1"
   },
   "hideAddButton" : false
