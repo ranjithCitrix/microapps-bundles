@@ -33,7 +33,6 @@ async function fullSync({ client, dataStore }) {
   ]);
 }
 
-// calendar View dataloading code
 async function calendarView(client, dataStore, userId, startDate) {
   const endDate = moment.utc().add(30, "d").format();
   for (const id of userId) {
@@ -84,7 +83,6 @@ async function calendarView(client, dataStore, userId, startDate) {
   }
 }
 
-// myEvents dataloading code
 async function myEvents(client, dataStore, userId) {
   for (const id of userId) {
     const myEventRequest = await client.fetch(
@@ -112,7 +110,7 @@ async function myEvents(client, dataStore, userId) {
     }
   }
 }
-//CreateRecurringOfficeHourswithCustomTimezone
+
 async function createRecurringOfficeHourswithCustomTimezone({
   dataStore,
   client,
@@ -120,7 +118,7 @@ async function createRecurringOfficeHourswithCustomTimezone({
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
 
-  const responseOfSwitchCoustomTimeZone = await client.fetch(`v1.0/me/events`, {
+  const responseOfSwitchCustomTimeZone = await client.fetch(`v1.0/me/events`, {
     method: "POST",
     body: JSON.stringify({
       subject: actionParameters.subject,
@@ -154,9 +152,9 @@ async function createRecurringOfficeHourswithCustomTimezone({
       },
     }),
   });
-  if (!responseOfSwitchCoustomTimeZone.ok) {
+  if (!responseOfSwitchCustomTimeZone.ok) {
     throw new Error(
-      ` Could not create Recurring OfficeHours with coustom timezone(${responseOfSwitchCoustomTimeZone.status}: ${responseOfSwitchCoustomTimeZone.statusText})`
+      ` Could not create Recurring OfficeHours with Custom timezone(${responseOfSwitchCustomTimeZone.status}: ${responseOfSwitchCustomTimeZone.statusText})`
     );
   }
   const userId = [actionParameters.userId];
@@ -165,7 +163,7 @@ async function createRecurringOfficeHourswithCustomTimezone({
     myEvents(client, dataStore, userId),
   ]);
 }
-//EditOneTimeWithCurrentTimezone
+
 async function editOneTimeWithCurrentTimezone({
   dataStore,
   client,
@@ -250,7 +248,7 @@ async function editOneTimeWithCurrentTimezone({
     myEvents(client, dataStore, userId),
   ]);
 }
-//EditOneTimeEventWithCustomTimezone
+
 async function editOneTimeEventWithCustomTimezone({
   dataStore,
   client,
@@ -258,7 +256,7 @@ async function editOneTimeEventWithCustomTimezone({
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
 
-  const responseOfCoustomTimeZone = await client.fetch(
+  const responseOfCustomTimeZone = await client.fetch(
     `v1.0/me/events/${actionParameters.id}`,
     {
       method: "PATCH",
@@ -325,9 +323,9 @@ async function editOneTimeEventWithCustomTimezone({
       }),
     }
   );
-  if (!responseOfCoustomTimeZone.ok) {
+  if (!responseOfCustomTimeZone.ok) {
     throw new Error(
-      `Could not Edit OneTimeEvent with CustomTimezone (${responseOfCoustomTimeZone.status}: ${responseOfCoustomTimeZone.statusText})`
+      `Could not Edit OneTimeEvent with CustomTimezone (${responseOfCustomTimeZone.status}: ${responseOfCustomTimeZone.statusText})`
     );
   }
   const userId = [actionParameters.userId];
