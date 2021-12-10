@@ -2,7 +2,6 @@ const moment = library.load("moment-timezone");
 const uuid = library.load("uuid");
 const pageSize = 100;
 
-//full synchronization code
 async function fullSync({ client, dataStore }) {
   let userId = [];
   let URL = `/v1.0/users?$top=${pageSize}`;
@@ -114,7 +113,7 @@ async function myEvents(client, dataStore, userId) {
   }
 }
 //CreateRecurringOfficeHourswithCustomTimezone
-async function CreateRecurringOfficeHourswithCustomTimezone({
+async function createRecurringOfficeHourswithCustomTimezone({
   dataStore,
   client,
   actionParameters,
@@ -155,26 +154,24 @@ async function CreateRecurringOfficeHourswithCustomTimezone({
       },
     }),
   });
-  console.log(JSON.stringify(responseOfSwitchCoustomTimeZone));
   if (!responseOfSwitchCoustomTimeZone.ok) {
     throw new Error(
-      ` Could not create Event (${responseOfSwitchCoustomTimeZone.status}: ${responseOfSwitchCoustomTimeZone.statusText})`
+      ` Could not create Recurring OfficeHours with coustom timezone(${responseOfSwitchCoustomTimeZone.status}: ${responseOfSwitchCoustomTimeZone.statusText})`
     );
   }
-  const user_Id = [actionParameters.userId];
-  // console.log(user_Id);
-  await calendarView(client, dataStore, user_Id, startDate);
-  await myEvents(client, dataStore, user_Id);
+  const userId = [actionParameters.userId];
+  await Promise.all([
+    calendarView(client, dataStore, userId, startDate),
+    myEvents(client, dataStore, userId),
+  ]);
 }
 //EditOneTimeWithCurrentTimezone
-async function EditOneTimeWithCurrentTimezone({
+async function editOneTimeWithCurrentTimezone({
   dataStore,
   client,
   actionParameters,
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
-
-  // console.log(startDate)
   const responseOfCurrentTimeZone = await client.fetch(
     `v1.0/me/events/${actionParameters.id}`,
     {
@@ -206,7 +203,7 @@ async function EditOneTimeWithCurrentTimezone({
           },
           {
             emailAddress: {
-              address: actionParameters.emai2,
+              address: actionParameters.email2,
             },
             type: actionParameters.type2,
           },
@@ -239,22 +236,22 @@ async function EditOneTimeWithCurrentTimezone({
         isOnlineMeeting: actionParameters.isOnlineMeeting,
         onlineMeetingProvider: actionParameters.onlineMeeting,
         id: actionParameters.id,
-        //userId: actionParameters.userId
       }),
     }
   );
-  console.log(JSON.stringify(responseOfCurrentTimeZone));
   if (!responseOfCurrentTimeZone.ok) {
     throw new Error(
-      `Could not Edit Event (${responseOfCurrentTimeZone.status}: ${responseOfCurrentTimeZone.statusText})`
+      `Could not Edit OneTime with CurrentTimezone (${responseOfCurrentTimeZone.status}: ${responseOfCurrentTimeZone.statusText})`
     );
   }
-  const user_Id = [actionParameters.userId];
-  await calendarView(client, dataStore, user_Id, startDate);
-  await myEvents(client, dataStore, user_Id);
+  const userId = [actionParameters.userId];
+  await Promise.all([
+    calendarView(client, dataStore, userId, startDate),
+    myEvents(client, dataStore, userId),
+  ]);
 }
 //EditOneTimeEventWithCustomTimezone
-async function EditOneTimeEventWithCustomTimezone({
+async function editOneTimeEventWithCustomTimezone({
   dataStore,
   client,
   actionParameters,
@@ -293,7 +290,7 @@ async function EditOneTimeEventWithCustomTimezone({
           },
           {
             emailAddress: {
-              address: actionParameters.emai2,
+              address: actionParameters.email2,
             },
             type: actionParameters.type2,
           },
@@ -328,16 +325,16 @@ async function EditOneTimeEventWithCustomTimezone({
       }),
     }
   );
-  console.log(JSON.stringify(responseOfCoustomTimeZone));
-  // console.log(JSON.stringify(responseOfSwitchCoustomTimeZone));
   if (!responseOfCoustomTimeZone.ok) {
     throw new Error(
-      `Could not Edit Event (${responseOfCoustomTimeZone.status}: ${responseOfCoustomTimeZone.statusText})`
+      `Could not Edit OneTimeEvent with CustomTimezone (${responseOfCoustomTimeZone.status}: ${responseOfCoustomTimeZone.statusText})`
     );
   }
-  const user_Id = [actionParameters.userId];
-  await calendarView(client, dataStore, user_Id, startDate);
-  await myEvents(client, dataStore, user_Id);
+  const userId = [actionParameters.userId];
+  await Promise.all([
+    calendarView(client, dataStore, userId, startDate),
+    myEvents(client, dataStore, userId),
+  ]);
 }
 
 integration.define({
@@ -563,7 +560,7 @@ integration.define({
   },
   actions: [
     {
-      name: "CreateRecurringOfficeHourswithCustomTimezone",
+      name: "createRecurringOfficeHourswithCustomTimezone",
       parameters: [
         {
           name: "isOnlineMeeting",
@@ -625,10 +622,10 @@ integration.define({
           type: "STRING",
         },
       ],
-      function: CreateRecurringOfficeHourswithCustomTimezone,
+      function: createRecurringOfficeHourswithCustomTimezone,
     },
     {
-      name: "EditOneTimeWithCurrentTimezone",
+      name: "editOneTimeWithCurrentTimezone",
       parameters: [
         {
           name: "subject",
@@ -723,11 +720,11 @@ integration.define({
           type: "STRING",
         },
       ],
-      function: EditOneTimeWithCurrentTimezone,
+      function: editOneTimeWithCurrentTimezone,
     },
 
     {
-      name: "EditOneTimeEventWithCustomTimezone",
+      name: "editOneTimeEventWithCustomTimezone",
       parameters: [
         {
           name: "subject",
@@ -829,7 +826,7 @@ integration.define({
           type: "STRING",
         },
       ],
-      function: EditOneTimeEventWithCustomTimezone,
+      function: editOneTimeEventWithCustomTimezone,
     },
   ],
 });
