@@ -1,4 +1,5 @@
 integration.define({
+  
     synchronizations: [
         {
             name: 'Outlook',
@@ -729,3 +730,4 @@ async function refresh(param) {
         myEvents(client, dataStore, [actionParameters.id])
     ])
 }
+
