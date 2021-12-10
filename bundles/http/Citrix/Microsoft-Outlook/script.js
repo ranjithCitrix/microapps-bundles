@@ -114,7 +114,7 @@ async function myEvents(client, dataStore, userId) {
 async function createOutlookOneTimeEventCurrentTimezone({
   dataStore,
   client,
-  actionParameters,
+  actionParameters
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
   const responseOfcreateOutlookOneTimeEventCurrentTimezone = await client.fetch(
@@ -125,61 +125,61 @@ async function createOutlookOneTimeEventCurrentTimezone({
         subject: actionParameters.subject,
         body: {
           contentType: "HTML",
-          content: actionParameters.content,
+          content: actionParameters.content
         },
         start: {
           dateTime: actionParameters.startDateTime,
-          timeZone: "",
+          timeZone: ""
         },
         end: {
           dateTime: actionParameters.endDateTime,
-          timeZone: "",
+          timeZone: ""
         },
         location: {
-          displayName: actionParameters.location,
+          displayName: actionParameters.location
         },
         attendees: [
           {
             emailAddress: {
-              address: actionParameters.email1,
+              address: actionParameters.email1
             },
-            type: actionParameters.type1,
+            type: actionParameters.type1
           },
           {
             emailAddress: {
-              address: actionParameters.email2,
+              address: actionParameters.email2
             },
-            type: actionParameters.type2,
+            type: actionParameters.type2
           },
           {
             emailAddress: {
-              address: actionParameters.email3,
+              address: actionParameters.email3
             },
-            type: actionParameters.type3,
+            type: actionParameters.type3
           },
           {
             emailAddress: {
-              address: actionParameters.email4,
+              address: actionParameters.email4
             },
-            type: actionParameters.type4,
+            type: actionParameters.type4
           },
           {
             emailAddress: {
-              address: actionParameters.email5,
+              address: actionParameters.email5
             },
-            type: actionParameters.type5,
+            type: actionParameters.type5
           },
           {
             emailAddress: {
-              address: actionParameters.email6,
+              address: actionParameters.email6
             },
-            type: actionParameters.type6,
-          },
+            type: actionParameters.type6
+          }
         ],
         allowNewTimeProposals: true,
         isOnlineMeeting: actionParameters.isOnlineMeeting,
-        onlineMeetingProvider: actionParameters.onlineMeetingProvider,
-      }),
+        onlineMeetingProvider: actionParameters.onlineMeetingProvider
+      })
     }
   );
   if (!responseOfcreateOutlookOneTimeEventCurrentTimezone.ok) {
@@ -190,14 +190,14 @@ async function createOutlookOneTimeEventCurrentTimezone({
   const userId = [actionParameters.userId];
   await Promise.all([
     calendarView(client, dataStore, userId, startDate),
-    myEvents(client, dataStore, userId),
+    myEvents(client, dataStore, userId)
   ]);
 }
 
 async function createOutlookOneTimeEventCustomTimezone({
   dataStore,
   client,
-  actionParameters,
+  actionParameters
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
   const responseOfcreateOutlookOneTimeEventCustomTimezone = await client.fetch(
@@ -208,61 +208,61 @@ async function createOutlookOneTimeEventCustomTimezone({
         subject: actionParameters.subject,
         body: {
           contentType: "HTML",
-          content: actionParameters.content,
+          content: actionParameters.content
         },
         start: {
           dateTime: `${actionParameters.startDate}T${actionParameters.startTime}`,
-          timeZone: actionParameters.timezone,
+          timeZone: actionParameters.timezone
         },
         end: {
           dateTime: `${actionParameters.endDate}T${actionParameters.endTime}`,
-          timeZone: actionParameters.timezone,
+          timeZone: actionParameters.timezone
         },
         location: {
-          displayName: actionParameters.location,
+          displayName: actionParameters.location
         },
         attendees: [
           {
             emailAddress: {
-              address: actionParameters.email1,
+              address: actionParameters.email1
             },
-            type: actionParameters.type1,
+            type: actionParameters.type1
           },
           {
             emailAddress: {
-              address: actionParameters.email2,
+              address: actionParameters.email2
             },
-            type: actionParameters.type2,
+            type: actionParameters.type2
           },
           {
             emailAddress: {
-              address: actionParameters.email3,
+              address: actionParameters.email3
             },
-            type: actionParameters.type3,
+            type: actionParameters.type3
           },
           {
             emailAddress: {
-              address: actionParameters.email4,
+              address: actionParameters.email4
             },
-            type: actionParameters.type4,
+            type: actionParameters.type4
           },
           {
             emailAddress: {
-              address: actionParameters.email5,
+              address: actionParameters.email5
             },
-            type: actionParameters.type5,
+            type: actionParameters.type5
           },
           {
             emailAddress: {
-              address: actionParameters.email6,
+              address: actionParameters.email6
             },
-            type: actionParameters.type6,
-          },
+            type: actionParameters.type6
+          }
         ],
         allowNewTimeProposals: true,
         isOnlineMeeting: actionParameters.isOnlineMeeting,
-        onlineMeetingProvider: actionParameters.onlineMeetingProvider,
-      }),
+        onlineMeetingProvider: actionParameters.onlineMeetingProvider
+      })
     }
   );
   if (!responseOfcreateOutlookOneTimeEventCustomTimezone.ok) {
@@ -273,14 +273,14 @@ async function createOutlookOneTimeEventCustomTimezone({
   const userId = [actionParameters.userId];
   await Promise.all([
     calendarView(client, dataStore, userId, startDate),
-    myEvents(client, dataStore, userId),
+    myEvents(client, dataStore, userId)
   ]);
 }
 
 async function createRecurringEventCurrentTimeZone({
   dataStore,
   client,
-  actionParameters,
+  actionParameters
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
   const responseOfcreateRecurringEventCurrentTimeZone = await client.fetch(
@@ -291,55 +291,55 @@ async function createRecurringEventCurrentTimeZone({
         subject: actionParameters.subject,
         body: {
           contentType: "HTML",
-          content: actionParameters.content,
+          content: actionParameters.content
         },
         start: {
           dateTime: actionParameters.startDateTime,
-          timeZone: "UTC",
+          timeZone: "UTC"
         },
         end: {
           dateTime: actionParameters.endDateTime,
-          timeZone: "UTC",
+          timeZone: "UTC"
         },
         location: {
-          displayName: actionParameters.location,
+          displayName: actionParameters.location
         },
         attendees: [
           {
             emailAddress: {
-              address: actionParameters.email1,
+              address: actionParameters.email1
             },
-            type: actionParameters.type1,
+            type: actionParameters.type1
           },
           {
             emailAddress: {
-              address: actionParameters.email2,
+              address: actionParameters.email2
             },
-            type: actionParameters.type2,
+            type: actionParameters.type2
           },
           {
             emailAddress: {
-              address: actionParameters.email3,
+              address: actionParameters.email3
             },
-            type: actionParameters.type3,
+            type: actionParameters.type3
           },
           {
             emailAddress: {
-              address: actionParameters.email4,
+              address: actionParameters.email4
             },
-            type: actionParameters.type4,
+            type: actionParameters.type4
           },
           {
             emailAddress: {
-              address: actionParameters.email5,
+              address: actionParameters.email5
             },
-            type: actionParameters.type5,
+            type: actionParameters.type5
           },
           {
             emailAddress: {
-              address: actionParameters.email6,
+              address: actionParameters.email6
             },
-            type: actionParameters.type6,
+            type: actionParameters.type6
           },
         ],
         allowNewTimeProposals: true,
@@ -350,15 +350,15 @@ async function createRecurringEventCurrentTimeZone({
             type: actionParameters.recurrencetype,
             interval: 1,
             daysOfWeek: [actionParameters.days],
-            dayOfMonth: actionParameters.dayOfMonth,
+            dayOfMonth: actionParameters.dayOfMonth
           },
           range: {
             type: "endDate",
             startDate: moment(actionParameters.startDate).format("YYYY-MM-DD"),
-            endDate: actionParameters.endDate,
-          },
-        },
-      }),
+            endDate: actionParameters.endDate
+          }
+        }
+      })
     }
   );
   if (!responseOfcreateRecurringEventCurrentTimeZone.ok) {
@@ -369,7 +369,7 @@ async function createRecurringEventCurrentTimeZone({
   const userId = [actionParameters.userId];
   await Promise.all([
     calendarView(client, dataStore, userId, startDate),
-    myEvents(client, dataStore, userId),
+    myEvents(client, dataStore, userId)
   ]);
 }
 
@@ -387,56 +387,56 @@ async function createRecurringEventCustomTimeZone({
         subject: actionParameters.subject,
         body: {
           contentType: "HTML",
-          content: actionParameters.content,
+          content: actionParameters.content
         },
         start: {
           dateTime: `${actionParameters.startDate}T${actionParameters.startTime}`,
-          timeZone: actionParameters.timezone,
+          timeZone: actionParameters.timezone
         },
         end: {
           dateTime: `${actionParameters.endDate}T${actionParameters.endTime}`,
-          timeZone: actionParameters.timezone,
+          timeZone: actionParameters.timezone
         },
         location: {
-          displayName: actionParameters.location,
+          displayName: actionParameters.location
         },
         attendees: [
           {
             emailAddress: {
-              address: actionParameters.email1,
+              address: actionParameters.email1
             },
-            type: actionParameters.type1,
+            type: actionParameters.type1
           },
           {
             emailAddress: {
-              address: actionParameters.email2,
+              address: actionParameters.email2
             },
-            type: actionParameters.type2,
+            type: actionParameters.type2
           },
           {
             emailAddress: {
-              address: actionParameters.email3,
+              address: actionParameters.email3
             },
-            type: actionParameters.type3,
+            type: actionParameters.type3
           },
           {
             emailAddress: {
-              address: actionParameters.email4,
+              address: actionParameters.email4
             },
-            type: actionParameters.type4,
+            type: actionParameters.type4
           },
           {
             emailAddress: {
-              address: actionParameters.email5,
+              address: actionParameters.email5
             },
-            type: actionParameters.type5,
+            type: actionParameters.type5
           },
           {
             emailAddress: {
-              address: actionParameters.email6,
+              address: actionParameters.email6
             },
-            type: actionParameters.type6,
-          },
+            type: actionParameters.type6
+          }
         ],
         allowNewTimeProposals: actionParameters.allowNewTimeProposals,
         isOnlineMeeting: actionParameters.isOnlineMeeting,
@@ -446,15 +446,15 @@ async function createRecurringEventCustomTimeZone({
             type: actionParameters.recurrencetype,
             interval: 1,
             daysOfWeek: [actionParameters.days],
-            dayOfMonth: actionParameters.dayOfMonth,
+            dayOfMonth: actionParameters.dayOfMonth
           },
           range: {
             type: "endDate",
             startDate: actionParameters.startDate,
-            endDate: actionParameters.recurEndDate,
-          },
-        },
-      }),
+            endDate: actionParameters.recurEndDate
+          }
+        }
+      })
     }
   );
   if (!responseOfcreateRecurringEventCustomTimeZone.ok) {
@@ -465,32 +465,32 @@ async function createRecurringEventCustomTimeZone({
   const userId = [actionParameters.userId];
   await Promise.all([
     calendarView(client, dataStore, userId, startDate),
-    myEvents(client, dataStore, userId),
+    myEvents(client, dataStore, userId)
   ]);
 }
 
 async function createRecurringOfficeHoursWithCurrentTimezone({
   dataStore,
   client,
-  actionParameters,
+  actionParameters
 }) {
   const startDate = moment.utc().subtract(1, "m").format();
-  const responseOfcreateRecurringOfficeHoursWithCurrentTimezone =
-    await client.fetch(`/v1.0/me/events`, {
+  const responseOfcreateRecurringOfficeHoursWithCurrentTimezone = await client.fetch(
+      `/v1.0/me/events`, {
       method: "POST",
       body: JSON.stringify({
         subject: actionParameters.subject,
         body: {
           contentType: "HTML",
-          content: actionParameters.content,
+          content: actionParameters.content
         },
         start: {
           dateTime: actionParameters.startDateTime,
-          timeZone: "UTC",
+          timeZone: "UTC"
         },
         end: {
           dateTime: actionParameters.endDateTime,
-          timeZone: "UTC",
+          timeZone: "UTC"
         },
         allowNewTimeProposals: actionParameters.allowNewTimeProposals,
         isOnlineMeeting: actionParameters.isOnlineMeeting,
@@ -500,15 +500,15 @@ async function createRecurringOfficeHoursWithCurrentTimezone({
             type: actionParameters.recurrencetype,
             interval: 1,
             daysOfWeek: [actionParameters.days],
-            dayOfMonth: actionParameters.dayOfMonth,
+            dayOfMonth: actionParameters.dayOfMonth
           },
           range: {
             type: "endDate",
             startDate: moment(actionParameters.startDate).format("YYYY-MM-DD"),
-            endDate: actionParameters.endDate,
-          },
-        },
-      }),
+            endDate: actionParameters.endDate
+          }
+        }
+      })
     });
   if (!responseOfcreateRecurringOfficeHoursWithCurrentTimezone.ok) {
     throw new Error(
@@ -518,7 +518,7 @@ async function createRecurringOfficeHoursWithCurrentTimezone({
   const userId = [actionParameters.userId];
   await Promise.all([
     calendarView(client, dataStore, userId, startDate),
-    myEvents(client, dataStore, userId),
+    myEvents(client, dataStore, userId)
   ]);
 }
 
@@ -749,454 +749,454 @@ integration.define({
       parameters: [
         {
           name: "userId",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "content",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDateTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endDateTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "isOnlineMeeting",
-          type: "BOOLEAN",
+          type: "BOOLEAN"
         },
         {
           name: "location",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "onlineMeetingProvider",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "subject",
-          type: "STRING",
+          type: "STRING"
         },
       ],
-      function: createOutlookOneTimeEventCurrentTimezone,
+      function: createOutlookOneTimeEventCurrentTimezone
     },
     {
       name: "createOutlookOneTimeEventCustomTimezone",
       parameters: [
         {
           name: "isOnlineMeeting",
-          type: "BOOLEAN",
+          type: "BOOLEAN"
         },
         {
           name: "endDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "subject",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "timezone",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "onlineMeetingProvider",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "content",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "userId",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "location",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDate",
-          type: "STRING",
+          type: "STRING"
         },
       ],
-      function: createOutlookOneTimeEventCustomTimezone,
+      function: createOutlookOneTimeEventCustomTimezone
     },
     {
       name: "createRecurringEventCurrentTimeZone",
       parameters: [
         {
           name: "isOnlineMeeting",
-          type: "BOOLEAN",
+          type: "BOOLEAN"
         },
         {
           name: "subject",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "onlineMeetingProvider",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "content",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endDateTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "userId",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDateTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "dayOfMonth",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "days",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "location",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "recurrencetype",
-          type: "STRING",
+          type: "STRING"
         },
       ],
-      function: createRecurringEventCurrentTimeZone,
+      function: createRecurringEventCurrentTimeZone
     },
     {
       name: "createRecurringEventCustomTimeZone",
       parameters: [
         {
           name: "isOnlineMeeting",
-          type: "BOOLEAN",
+          type: "BOOLEAN"
         },
         {
           name: "endDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "subject",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "timezone",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "onlineMeetingProvider",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "content",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "email1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type1",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type2",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type3",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type4",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type5",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "type6",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "recurEndDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "userId",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "dayOfMonth",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "days",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "location",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "recurrencetype",
-          type: "STRING",
+          type: "STRING"
         },
       ],
-      function: createRecurringEventCustomTimeZone,
+      function: createRecurringEventCustomTimeZone
     },
     {
       name: "createRecurringOfficeHoursWithCurrentTimezone",
       parameters: [
         {
           name: "isOnlineMeeting",
-          type: "BOOLEAN",
+          type: "BOOLEAN"
         },
         {
           name: "subject",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endDateTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "userId",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "content",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDateTime",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "endDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "dayOfMonth",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "days",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "startDate",
-          type: "STRING",
+          type: "STRING"
         },
         {
           name: "recurrencetype",
-          type: "STRING",
+          type: "STRING"
         },
       ],
-      function: createRecurringOfficeHoursWithCurrentTimezone,
-    },
-  ],
+      function: createRecurringOfficeHoursWithCurrentTimezone
+    }
+  ]
 });
