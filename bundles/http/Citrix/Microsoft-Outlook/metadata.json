@@ -6,9 +6,9 @@
   "title" : "Microsoft Outlook IF-285",
   "description" : "Deploy the Microsoft Outlook integration to schedule Event and Office Hours, edit Event and Office Hours, and receive a notification before an hour the event start time.",
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/LDZp7vNefzsQ0yfWFcBuk6UOIYfTkbMz.png",
-  "masVersion" : "1.136.0.843ffba479fd46f0a40992f38bd38a0ec4471dad",
+  "masVersion" : "1.137.0.021e9ab4625a29e337965925e9cba14ae95e9f2b",
   "categories" : ["WEB_SERVICES"],
-  "created" : "2021-12-10T11:02:49",
+  "created" : "2021-12-14T19:31:38",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
@@ -30,14 +30,11 @@
     "numberOfEvents" : 1,
     "action" : true
   } ],
-   "tags" : [{
-   "tag" : "helpUrl",
-   "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-ms-outlook.html"
-   }],
+  "tags" : [ ],
   "scriptMetadata" : {
     "originalFileName" : "script.js",
     "storedFileName" : "script.js",
-    "checksum" : "6F94BC2ED525E7ADD79598151DAACBEC",
+    "checksum" : "116CEA518502F5695D66DAFBD91FF2FD",
     "apiVersion" : "1.1"
   },
   "hideAddButton" : false
