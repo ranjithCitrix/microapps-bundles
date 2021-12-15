@@ -8,7 +8,7 @@
   "iconUrl" : "https://iws-prod-global-customicons-cdn-endpoint.azureedge.net/image/LDZp7vNefzsQ0yfWFcBuk6UOIYfTkbMz.png",
   "masVersion" : "1.137.0.021e9ab4625a29e337965925e9cba14ae95e9f2b",
   "categories" : ["WEB_SERVICES"],
-  "created" : "2021-12-14T19:31:38",
+  "created" : "2021-12-15T09:43:11",
   "supportsOAuthForActions" : true,
   "i18nLanguages" : [ "de", "en", "es", "fr", "it", "ja", "nl", "pt-BR", "zh-CN" ],
   "apps" : [ {
@@ -30,11 +30,14 @@
     "numberOfEvents" : 1,
     "action" : true
   } ],
-  "tags" : [ ],
+  "tags" : [{
+   "tag" : "helpUrl",
+   "value" : "https://docs.citrix.com/en-us/citrix-microapps/set-up-template-integrations/integrate-ms-outlook.html"
+   }],
   "scriptMetadata" : {
     "originalFileName" : "script.js",
     "storedFileName" : "script.js",
-    "checksum" : "116CEA518502F5695D66DAFBD91FF2FD",
+    "checksum" : "6CCB209D63C18C9223A1198F3FD3A6AF",
     "apiVersion" : "1.1"
   },
   "hideAddButton" : false

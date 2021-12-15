@@ -2,7 +2,6 @@ const moment = library.load('moment-timezone');
 const uuid = library.load('uuid');
 const pageSize = 100;
 
-//full synchronization code
 async function fullSync({ client, dataStore }) {
     let userId = [];
     let URL = `/v1.0/users?$top=${pageSize}`;
@@ -32,7 +31,7 @@ async function fullSync({ client, dataStore }) {
     ])
 }
 
-// calendar View dataloading code
+
 async function calendarView(client, dataStore, userId, startDate) {
     const endDate = moment.utc().add(30, 'd').format();
     for (const id of userId) {
@@ -78,7 +77,7 @@ async function calendarView(client, dataStore, userId, startDate) {
     }
 }
 
-// myEvents dataloading code
+
 async function myEvents(client, dataStore, userId) {
     for (const id of userId) {
         const myEventRequest = await client.fetch(`/v1.0/users/${id}/calendar/events?$top=${pageSize}`);
@@ -105,6 +104,7 @@ async function editRecurringEventwithCurrentTimezone(param) {
     const { client, dataStore, actionParameters } = param
     const start = moment.utc().subtract(1, "m").format()
     const end = moment().utc().add(30, 'd').format()
+    console.log(JSON.stringify(actionParameters))
     const attendees = [
         {
             "emailAddress": {
@@ -113,7 +113,7 @@ async function editRecurringEventwithCurrentTimezone(param) {
             "type": `${actionParameters.type1}`
         }
     ]
-    if (actionParameters?.email2) {
+    if (actionParameters?.email2 && actionParameters?.type2) {
         attendees.push(
             {
                 "emailAddress": {
@@ -122,7 +122,8 @@ async function editRecurringEventwithCurrentTimezone(param) {
                 "type": `${actionParameters.type2}`
             }
         )
-    } else if (actionParameters.email3) {
+    }
+    if (actionParameters?.email3 && actionParameters?.type3) {
         attendees.push({
             "emailAddress": {
                 "address": `${actionParameters.email3}`
@@ -130,21 +131,23 @@ async function editRecurringEventwithCurrentTimezone(param) {
             "type": `${actionParameters.type3}`
         })
     }
-    else if (actionParameters.email4) {
+    if (actionParameters?.email4 && actionParameters?.type4) {
         attendees.push({
             "emailAddress": {
                 "address": `${actionParameters.email4}`
             },
             "type": `${actionParameters.type4}`
         })
-    } else if (actionParameters.email5) {
+    }
+    if (actionParameters?.email5 && actionParameters?.type5) {
         attendees.push({
             "emailAddress": {
                 "address": `${actionParameters.email5}`
             },
             "type": `${actionParameters.type5}`
         })
-    } else if (actionParameters.email6) {
+    }
+    if (actionParameters?.email6 && actionParameters?.type6) {
         attendees.push({
             "emailAddress": {
                 "address": `${actionParameters.email6}`
@@ -152,7 +155,7 @@ async function editRecurringEventwithCurrentTimezone(param) {
             "type": `${actionParameters.type6}`
         })
     }
-    const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
+    const editRecurringEventRequest = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
             "subject": `${actionParameters.subject}`,
@@ -172,7 +175,43 @@ async function editRecurringEventwithCurrentTimezone(param) {
             "location": {
                 "displayName": `${actionParameters.location}`
             },
-            "attendees": attendees,
+            "attendees": [{
+                "emailAddress": {
+                    "address": `${actionParameters.email1}`
+                },
+                "type": `${actionParameters.type1}`
+            },
+            {
+                "emailAddress": {
+                    "address": `${actionParameters.email2}`
+                },
+                "type": `${actionParameters.type2}`
+            },
+            {
+                "emailAddress": {
+                    "address": `${actionParameters.email3}`
+                },
+                "type": `${actionParameters.type3}`
+            },
+            {
+                "emailAddress": {
+                    "address": `${actionParameters.email4}`
+                },
+                "type": `${actionParameters.type4}`
+            },
+            {
+                "emailAddress": {
+                    "address": `${actionParameters.email5}`
+                },
+                "type": `${actionParameters.type5}`
+            },
+            {
+                "emailAddress": {
+                    "address": `${actionParameters.email6}`
+                },
+                "type": `${actionParameters.type6}`
+            }
+            ],
             "allowNewTimeProposals": true,
             "isOnlineMeeting": actionParameters.isOnlineMeeting,
             "onlineMeetingProvider": `${actionParameters.onlineMeetingProvider}`,
@@ -185,28 +224,18 @@ async function editRecurringEventwithCurrentTimezone(param) {
                 },
                 "range": {
                     "type": "endDate",
-                    "startDate": `${moment(actionParameters.startdate).format('YYYY-MM-DD')}`,
-                    "endDate": `${actionParameters.endDate}`
+                    "startDate": `${moment(actionParameters.startDate).format('YYYY-MM-DD')}`,
+                    "endDate": `${moment(actionParameters.endDate).format('YYYY-MM-DD')}`
                 }
             }
         })
     })
-    if (!editRecurringEventReqeust.ok) {
-        throw new Error(editRecurringEventReqeust.text())
-    }
-    const userIds = [actionParameters.userId];
-    await Promise.all([
-        calendarView(client, dataStore, userIds, start),
-        myEvents(client, dataStore, userIds),
-    ]);
 }
-
-
 async function editRecurringEventwithCustomTimezone(param) {
     const { client, dataStore, actionParameters } = param
     const start = moment.utc().subtract(1, "m").format()
     const end = moment().utc().add(30, 'd').format()
-    const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
+    const editRecurringEventRequest = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
             "subject": `${actionParameters.subject}`,
@@ -268,7 +297,7 @@ async function editRecurringEventwithCustomTimezone(param) {
             "onlineMeetingProvider": `${actionParameters.onlineMeetingProvider}`,
             "recurrence": {
                 "pattern": {
-                    "type": `${actionParameters.recurrencetype}`,
+                    "type": `${actionParameters.recurrenceType}`,
                     "interval": 1,
                     "daysOfWeek": [actionParameters.days],
                     "dayOfMonth": actionParameters.dayOfMonth
@@ -281,8 +310,8 @@ async function editRecurringEventwithCustomTimezone(param) {
             }
         })
     })
-    if (!editRecurringEventReqeust.ok) {
-        throw new Error(editRecurringEventReqeust.text())
+    if (!editRecurringEventRequest.ok) {
+        throw new Error(`Edit Recurring Event with custom timezone service action is failed ${editRecurringEventRequest.status}:${editRecurringEventRequest.statusText}`)
     }
     const userIds = [actionParameters.userIds];
     await Promise.all([
@@ -297,7 +326,7 @@ async function editRecurringOfficeHoursWithCurrentTimezone(param) {
     const { client, dataStore, actionParameters } = param
     const start = moment.utc().subtract(1, "m").format()
     const end = moment().utc().add(30, 'd').format()
-    const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
+    const editRecurringEventRequest = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
             "subject": `${actionParameters.subject}`,
@@ -319,7 +348,7 @@ async function editRecurringOfficeHoursWithCurrentTimezone(param) {
             "onlineMeetingProvider": `${actionParameters.onlineMeetingProvider}`,
             "recurrence": {
                 "pattern": {
-                    "type": `${actionParameters.recurrencetype}`,
+                    "type": `${actionParameters.recurrenceType}`,
                     "interval": 1,
                     "daysOfWeek": [actionParameters.days],
                     "dayOfMonth": actionParameters.dayOfMonth
@@ -332,8 +361,8 @@ async function editRecurringOfficeHoursWithCurrentTimezone(param) {
             }
         })
     })
-    if (!editRecurringEventReqeust.ok) {
-        throw new Error(editRecurringEventReqeust.text())
+    if (!editRecurringEventRequest.ok) {
+        throw new Error(`Edit Recurring Office Hours with current timezone service action is failed ${editRecurringEventRequest.status}:${editRecurringEventRequest.statusText}`)
     }
     const userIds = [actionParameters.userId];
     await Promise.all([
@@ -346,7 +375,7 @@ async function editRecurringOfficeHoursWithCustomTimezone(param) {
     const { client, dataStore, actionParameters } = param
     const start = moment.utc().subtract(1, "m").format()
     const end = moment().utc().add(30, 'd').format()
-    const editRecurringEventReqeust = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
+    const editRecurringEventRequest = await client.fetch(`v1.0/me/events/${actionParameters.id}`, {
         method: "PATCH",
         body: JSON.stringify({
             "subject": `${actionParameters.subject}`,
@@ -368,7 +397,7 @@ async function editRecurringOfficeHoursWithCustomTimezone(param) {
             "onlineMeetingProvider": `${actionParameters.onlineMeetingProvider}`,
             "recurrence": {
                 "pattern": {
-                    "type": `${actionParameters.recurrencetype}`,
+                    "type": `${actionParameters.recurrenceType}`,
                     "interval": 1,
                     "daysOfWeek": [actionParameters.days],
                     "dayOfMonth": actionParameters.dayOfMonth
@@ -381,8 +410,8 @@ async function editRecurringOfficeHoursWithCustomTimezone(param) {
             }
         })
     })
-    if (!editRecurringEventReqeust.ok) {
-        throw new Error(editRecurringEventReqeust.text())
+    if (!editRecurringEventRequest.ok) {
+        throw new Error(`Edit Recurring Office Hours with custom timezone service action is failed ${editRecurringEventRequest.status}:${editRecurringEventRequest.statusText}`)
     }
     const userIds = [actionParameters.userId];
     await Promise.all([
@@ -395,7 +424,7 @@ async function editRecurringOfficeHoursWithCustomTimezone(param) {
 async function refresh(param) {
     const { client, dataStore, actionParameters } = param
     await Promise.all([
-        calendarView(client, dataStore, [actionParameters.id], actionParameters.startdatetime),
+        calendarView(client, dataStore, [actionParameters.id], actionParameters.startDateTime),
         myEvents(client, dataStore, [actionParameters.id])
     ])
 }
@@ -629,7 +658,7 @@ integration.define({
                 { name: "subject", type: "STRING" },
                 { name: "timezone", type: "STRING" },
                 { name: "onlineMeetingProvider", type: "STRING" },
-                { name: "startdate", type: "DATETIME" },
+                { name: "startDate", type: "DATETIME" },
                 { name: "startDateTime", type: "STRING" },
                 { name: "content", type: "STRING" },
                 { name: "email1", type: "STRING" },
@@ -665,8 +694,8 @@ integration.define({
                 { name: "subject", type: "STRING" },
                 { name: "timezone", type: "STRING" },
                 { name: "onlineMeetingProvider", type: "STRING" },
-                { name: "startdate", type: "DATETIME" },
-                { name: "startDateTime", type: "STRING" },
+                { name: "startDate", type: "DATETIME" },
+                { name: "startTime", type: "STRING" },
                 { name: "content", type: "STRING" },
                 { name: "email1", type: "STRING" },
                 { name: "email2", type: "STRING" },
@@ -682,7 +711,7 @@ integration.define({
                 { name: "type5", type: "STRING" },
                 { name: "type6", type: "STRING" },
                 { name: "refreshEndTime", type: "STRING" },
-                { name: "endDateTime", type: "STRING" },
+                { name: "endTime", type: "STRING" },
                 { name: "userId", type: "STRING", required: true },
                 { name: "endDate", type: "STRING" },
                 { name: "dayOfMonth", type: "STRING" },
@@ -690,7 +719,7 @@ integration.define({
                 { name: "location", type: "STRING" },
                 { name: "refreshStartTime", type: "STRING" },
                 { name: "recurrenceType", type: "STRING" },
-                { name: "reccurEndDate", type: "STRING"}
+                { name: "reccurEndDate", type: "STRING" }
             ],
             function: editRecurringEventwithCustomTimezone
         },
@@ -701,7 +730,7 @@ integration.define({
                 { name: "isMeetingOnline", type: "BOOLEAN" },
                 { name: "subject", type: "STRING" },
                 { name: "timezone", type: "STRING" },
-                { name: "startdate", type: "DATETIME" },
+                { name: "startDate", type: "DATETIME" },
                 { name: "startDateTime", type: "STRING" },
                 { name: "content", type: "STRING" },
                 { name: "id", type: "STRING", required: true },
@@ -723,19 +752,19 @@ integration.define({
                 { name: "isMeetingOnline", type: "BOOLEAN" },
                 { name: "subject", type: "STRING" },
                 { name: "timezone", type: "STRING" },
-                { name: "startdate", type: "DATETIME" },
-                { name: "startDateTime", type: "STRING" },
+                { name: "startDate", type: "DATETIME" },
+                { name: "startTime", type: "STRING" },
                 { name: "content", type: "STRING" },
                 { name: "id", type: "STRING", required: true },
                 { name: "refreshEndTime", type: "STRING" },
-                { name: "endDateTime", type: "STRING" },
+                { name: "endTime", type: "STRING" },
                 { name: "userId", type: "STRING", required: true },
                 { name: "endDate", type: "STRING" },
                 { name: "dayOfMonth", type: "STRING" },
                 { name: "days", type: "STRING" },
                 { name: "refreshStartTime", type: "STRING" },
                 { name: "recurrenceType", type: "STRING" },
-                { name: "reccurEndDate", type: "STRING"}
+                { name: "reccurEndDate", type: "STRING" }
             ],
             function: editRecurringOfficeHoursWithCustomTimezone
         },
@@ -743,8 +772,8 @@ integration.define({
         {
             name: "refresh",
             parameters: [
-                { name: "enddatetime", type: "STRING" },
-                { name: "startdatetime", type: "STRING" },
+                { name: "endDateTime", type: "STRING" },
+                { name: "startDateTime", type: "STRING" },
                 { name: "id", type: "STRING", required: true }
             ],
             function: refresh
